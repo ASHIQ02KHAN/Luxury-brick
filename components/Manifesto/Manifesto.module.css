@@ -1,0 +1,159 @@
+.manifesto {
+  background-color: var(--color-ash);
+  padding: var(--space-32) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Organic radial glow */
+.manifesto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(255, 0, 255, 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+}
+
+/* Statement block */
+.statement {
+  max-width: 780px;
+  margin-bottom: var(--space-24);
+  will-change: opacity, transform;
+}
+
+.sectionLabel {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-neon-pink);
+  text-shadow: 0 0 8px var(--color-neon-pink);
+  margin-bottom: var(--space-4);
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.5vw, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 15px var(--color-neon-cyan);
+  margin-bottom: var(--space-8);
+}
+
+.headline em {
+  font-style: normal;
+  color: var(--color-neon-pink);
+  text-shadow: 0 0 15px var(--color-neon-pink);
+}
+
+.intro {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: rgba(245, 240, 235, 0.65);
+  max-width: 620px;
+}
+
+/* Pillars grid */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255, 0, 255, 0.15);
+  border: 1px solid rgba(255, 0, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.1);
+  margin-bottom: var(--space-24);
+}
+
+.pillar {
+  background: var(--color-void);
+  padding: var(--space-8);
+  will-change: opacity, transform;
+  transition: background-color var(--duration-mid) var(--ease-smooth);
+}
+
+.pillar:hover {
+  background-color: rgba(255, 0, 255, 0.1);
+}
+
+.pillarStat {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 15px var(--color-neon-pink);
+  margin-bottom: var(--space-2);
+  line-height: 1;
+}
+
+.pillarSub {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--color-bone);
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+
+.pillarBody {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(245, 240, 235, 0.55);
+}
+
+/* Quote */
+.quote {
+  border-left: 2px solid var(--color-neon-cyan);
+  box-shadow: -5px 0 10px -5px var(--color-neon-cyan);
+  padding: var(--space-4) var(--space-8);
+  margin: 0;
+}
+
+.quote p {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 0 15px var(--color-neon-cyan);
+  margin-bottom: var(--space-4);
+}
+
+.quote cite {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: rgba(245, 240, 235, 0.4);
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+@media (max-width: 768px) {
+  .pillars { grid-template-columns: 1fr; }
+  .manifesto { padding: var(--space-24) 0; }
+}

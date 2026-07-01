@@ -1,49 +1,140 @@
+/* =============================================
+   THE MONOLITH — Global Design System
+   ============================================= */
+
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@200;300;400;500&display=swap');
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Design Tokens */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --color-void:         #050505;
+  --color-ash:          #0f0f0f;
+  --color-slate:        #1a1a1a;
+  --color-mist:         #2a2a2a;
+  --color-bone:         #F5F0EB;
+  --color-bone-dim:     #9A9087;
+  --color-terra:        #C1440E;
+  --color-terra-dim:    #8B3010;
+  --color-terra-glow:   rgba(193, 68, 14, 0.15);
+  --color-green-deep:   #0a1f12;
+  --color-green-mid:    #112a18;
+  --color-green-accent: #22c55e;
+  --color-green-dim:    #166534;
+  --color-gold:         #c9a84c;
+  --color-gold-dim:     #a0832a;
+  /* Neon Colors */
+  --color-neon-cyan:    #00f3ff;
+  --color-neon-pink:    #ff00ff;
+  --color-neon-purple:  #b026ff;
+  --color-neon-green:   #39ff14;
+
+  /* Typography */
+  --font-display:       'Space Grotesk', sans-serif;
+  --font-body:          'Inter', 'system-ui', sans-serif;
+
+  /* Spacing Scale */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Transitions */
+  --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-expo:    cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-smooth:     cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:   150ms;
+  --duration-mid:    300ms;
+  --duration-slow:   600ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base */
 html {
-  height: 100%;
+  font-size: 16px;
+  /* Native scroll — GSAP handles smooth scrolling */
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-html,
 body {
-  max-width: 100vw;
+  background-color: var(--color-void);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: var(--color-void); }
+::-webkit-scrollbar-thumb { background: var(--color-neon-cyan); border-radius: 1px; box-shadow: 0 0 6px var(--color-neon-cyan); }
+
+/* Selection */
+::selection {
+  background: var(--color-neon-pink);
+  color: #fff;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Typography Scale - fixed to prevent overlaps */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 9rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 4rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* Utility */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+}
+
+/* GPU acceleration hint for animated elements */
+.will-animate {
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
